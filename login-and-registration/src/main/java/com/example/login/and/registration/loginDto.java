@@ -1,10 +1,15 @@
 package com.example.login.and.registration;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.springframework.format.annotation.DateTimeFormat;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 
 public class loginDto {
 
@@ -13,11 +18,17 @@ public class loginDto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name="user_name")
-    private String itemCode;
+    @Column
+    private String userName;
 
-    @Column(name="password")
-    private String itemName;
+    @Column
+    private int password;
+
+    @Column
+    private String firstName;
+
+    @Column
+    private String lastName;
 
 
 }
