@@ -1,9 +1,8 @@
 package com.example.login.and.registration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,4 +18,15 @@ public class LoginController {
         LoginService.saveUser(loginDto);
         return loginDto;
     }
+    @DeleteMapping("/user/{id}")
+    private ResponseEntity<Object> deleteUser(@PathVariable("id") int id){
+        return LoginService.deleteByUserId(id);
+    }
+
+    @PutMapping("/user/{id}")
+    private ResponseEntity<Object> updateUser(@PathVariable int id, @RequestBody LoginDto loginDto){
+        return LoginService.updateUser(id, loginDto);
+    }
+
+
 }
